@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURALIVAIS | Ultra-Luxury Fashion</title>
+    <meta name="description" content="Discover AURALIVAIS, where heritage meets high fashion.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Transparent Navbar initially -->
+    <header class="transparent">
+        <nav>
+            <div class="logo">AURALIVAIS</div>
+            <ul>
+                <li><a href="index.html">Collection</a></li>
+                <li><a href="#maison">About Us</a></li>
+                <li><a href="#" onclick="toggleChat(); return false;">AI Concierge</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button aria-label="Search" onclick="alert('Search functionality coming soon to AURALIVAIS.')"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button aria-label="Account" onclick="alert('Client account portal coming soon to AURALIVAIS.')"><i class="fa-regular fa-user"></i></button>
+                <button aria-label="Cart" onclick="toggleCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Slide-out Cart Drawer -->
+    <div class="overlay" id="cart-overlay" onclick="closeCart()"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h2>Your Shopping Bag</h2>
+            <button class="close-cart" onclick="closeCart()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items-container">
+            <!-- Items injected by JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cart-total-amount">$0.00</span>
+            </div>
+            <a href="checkout.html" class="checkout-btn">Proceed to Secure Checkout</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <h1>Crafted for<br>Timeless Elegance</h1>
+            <p>The Autumn / Winter Collection</p>
+            <a href="#collection" class="btn-primary">Discover the Collection</a>
+        </div>
+    </section>
+
+    <main>
+        <!-- Storytelling Section -->
+        <section id="maison" class="story-section fade-in">
+            <div class="story-image">
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=1200" alt="Auralivais Heritage">
+            </div>
+            <div class="story-text">
+                <h2>Our Heritage</h2>
+                <p>Since our founding, AURALIVAIS has been synonymous with uncompromised luxury and visionary elegance. Every thread tells a story of devotion to the craft.</p>
+                <p>We source only the rarest materials, working with master artisans across the globe to create pieces that transcend seasons. AURALIVAIS is not just fashion; it is a legacy worn upon the skin.</p>
+            </div>
+        </section>
+
+        <!-- Curated Collection -->
+        <section id="collection">
+            <h2 class="section-title fade-in">Curated For You</h2>
+            <p class="section-subtitle fade-in">An exclusive selection from our latest arrivals</p>
+            <div class="product-grid" id="product-grid">
+                <!-- Products injected by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Chat Widget (Gold) -->
+    <div class="chat-widget">
+        <button class="chat-button" onclick="toggleChat()" aria-label="Open styling concierge">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </button>
+        
+        <div class="chat-popup" id="chat-popup">
+            <div class="chat-header">
+                AURALIVAIS Stylist
+                <button class="close-chat" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot">
+                    Welcome to AURALIVAIS. I am your personal styling concierge. How may I assist you with our collections today?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input-field" placeholder="Inquire about styling, fabrics..." onkeypress="handleChatKeypress(event)">
+                <button onclick="sendMessage()" aria-label="Send message"><i class="fa-regular fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3D Cinematic Modal -->
+    <div class="product-modal-overlay" id="product-modal" onclick="closeProductModal(event)">
+        <div class="product-modal-content">
+            <button class="close-modal-btn" onclick="closeProductModal(event)"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-left">
+                <div class="cinematic-viewer" id="cinematic-viewer">
+                    <!-- Images injected by JS -->
+                </div>
+                <div class="viewer-controls">
+                    <button onclick="prevImage()"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="dots" id="viewer-dots"></div>
+                    <button onclick="nextImage()"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="modal-right">
+                <h2 id="modal-title"></h2>
+                <p id="modal-price" class="modal-price"></p>
+                <div class="modal-divider"></div>
+                <p id="modal-desc" class="modal-desc"></p>
+                <button id="modal-add-btn" class="checkout-btn" style="margin-top: 3rem;">Acquire Piece</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

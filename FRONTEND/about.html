@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Maison | AURALIVAIS</title>
+    <meta name="description" content="Discover the heritage and craftsmanship of AURALIVAIS.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="background-color: var(--alabaster);">
+
+    <!-- Solid Navbar -->
+    <header class="scrolled">
+        <nav>
+            <div class="logo">AURALIVAIS</div>
+            <ul>
+                <li><a href="index.html">La Collection</a></li>
+                <li><a href="about.html">La Maison</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#" onclick="toggleChat(); return false;">Le Concierge</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button aria-label="Account"><i class="fa-regular fa-user"></i></button>
+                <button aria-label="Cart" onclick="toggleCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Slide-out Cart Drawer -->
+    <div class="overlay" id="cart-overlay" onclick="closeCart()"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h2>Your Shopping Bag</h2>
+            <button class="close-cart" onclick="closeCart()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items-container">
+            <!-- Items injected by JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cart-total-amount">$0.00</span>
+            </div>
+            <a href="checkout.html" class="checkout-btn">Proceed to Secure Checkout</a>
+        </div>
+    </div>
+
+    <!-- Main Editorial Content -->
+    <main style="padding-top: 150px;">
+        <h1 class="section-title fade-in">The AURALIVAIS Legacy</h1>
+        <p class="section-subtitle fade-in">A dedication to uncompromising luxury</p>
+
+        <section class="story-section fade-in" style="margin-top: 6rem;">
+            <div class="story-image">
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=1200" alt="Auralivais Heritage">
+            </div>
+            <div class="story-text">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--noir);">Our Philosophy</h2>
+                <p>Since our founding, AURALIVAIS has been synonymous with visionary elegance. We believe that true luxury is not merely worn; it is experienced. It is the weight of Italian silk, the precision of a hand-stitched seam, and the timelessness of a silhouette.</p>
+                <p>Every piece in our collection represents hundreds of hours of devotion by master artisans across the globe.</p>
+            </div>
+        </section>
+
+        <section class="story-section fade-in" style="margin-top: 6rem; direction: rtl;">
+            <div class="story-image">
+                <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=1200" alt="Auralivais Craftsmanship">
+            </div>
+            <div class="story-text" style="direction: ltr; padding-right: 4rem;">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--noir);">The Atelier</h2>
+                <p>We source only the rarest materials: hand-sourced cashmere, ethically acquired vicuña wool, and the highest grade Mulberry silk.</p>
+                <p>AURALIVAIS is a rejection of the fast and the disposable. We craft heirlooms. Pieces designed not to follow seasons, but to transcend them entirely.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-button" onclick="toggleChat()" aria-label="Open styling concierge">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </button>
+        
+        <div class="chat-popup" id="chat-popup">
+            <div class="chat-header">
+                AURALIVAIS Stylist
+                <button class="close-chat" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot">
+                    Welcome to AURALIVAIS. I am your personal styling concierge. How may I assist you with our collections today?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input-field" placeholder="Inquire about styling, materials..." onkeypress="handleChatKeypress(event)">
+                <button onclick="sendMessage()" aria-label="Send message"><i class="fa-regular fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

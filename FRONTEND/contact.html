@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | AURALIVAIS</title>
+    <meta name="description" content="Inquire with AURALIVAIS.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="background-color: var(--alabaster);">
+
+    <!-- Solid Navbar -->
+    <header class="scrolled">
+        <nav>
+            <div class="logo">AURALIVAIS</div>
+            <ul>
+                <li><a href="index.html">La Collection</a></li>
+                <li><a href="about.html">La Maison</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#" onclick="toggleChat(); return false;">Le Concierge</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button aria-label="Account"><i class="fa-regular fa-user"></i></button>
+                <button aria-label="Cart" onclick="toggleCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Slide-out Cart Drawer -->
+    <div class="overlay" id="cart-overlay" onclick="closeCart()"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h2>Your Shopping Bag</h2>
+            <button class="close-cart" onclick="closeCart()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items-container">
+            <!-- Items injected by JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cart-total-amount">$0.00</span>
+            </div>
+            <a href="checkout.html" class="checkout-btn">Proceed to Secure Checkout</a>
+        </div>
+    </div>
+
+    <!-- Contact Content -->
+    <main style="padding-top: 150px; display: flex; flex-direction: column; align-items: center;">
+        <h1 class="section-title fade-in">Private Client Inquiries</h1>
+        <p class="section-subtitle fade-in" style="margin-bottom: 3rem;">Connect with our dedicated advisors</p>
+
+        <div class="checkout-form fade-in" style="width: 100%; max-width: 600px; background: #fff; padding: 3rem; border: 1px solid #eee;">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="contact-name" required placeholder="e.g. Jane Doe">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="contact-email" required placeholder="e.g. jane@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Nature of Inquiry</label>
+                    <select id="contact-subject" style="width: 100%; padding: 1.2rem; border: 1px solid #ddd; background: transparent; font-family: var(--font-body); outline: none;" required>
+                        <option value="styling">Personal Styling Services</option>
+                        <option value="bespoke">Bespoke & Made-to-Measure</option>
+                        <option value="order">Order Status</option>
+                        <option value="other">General Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea id="contact-message" rows="5" required style="width: 100%; padding: 1.2rem; border: 1px solid #ddd; background: transparent; font-family: var(--font-body); outline: none; resize: vertical;" placeholder="How may we assist you?"></textarea>
+                </div>
+                
+                <button type="submit" class="checkout-btn" id="contact-submit-btn">Send Inquiry</button>
+            </form>
+            <div id="contact-response" style="margin-top: 1.5rem; text-align: center; font-size: 0.9rem; color: var(--gold); display: none;"></div>
+        </div>
+    </main>
+
+    <!-- Floating Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-button" onclick="toggleChat()" aria-label="Open styling concierge">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </button>
+        
+        <div class="chat-popup" id="chat-popup">
+            <div class="chat-header">
+                AURALIVAIS Stylist
+                <button class="close-chat" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot">
+                    Welcome to AURALIVAIS. I am your personal styling concierge. How may I assist you with our collections today?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input-field" placeholder="Inquire about styling, materials..." onkeypress="handleChatKeypress(event)">
+                <button onclick="sendMessage()" aria-label="Send message"><i class="fa-regular fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
